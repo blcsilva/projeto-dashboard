@@ -1,0 +1,23 @@
+{{>header}}
+<body>
+<h1>Alterar Dados do Usuário</h1>
+
+<form method="post">
+<input type="text" name="name" value="{{user.name}}">
+<input type="email" name="email" value="{{user.email}}">
+<input type="submit" value="salvar">
+
+</form>
+<hr/>
+<h1>Alterar Senha</h1>
+
+<form method="post" action="/profile/password">
+<label>Nova Senha</label>
+<input type="password" name="password">
+<label>Confirmar Senha</label>
+<input type="password" name="password-confirm">
+<input type="submit" value="salvar">
+
+
+
+</body>

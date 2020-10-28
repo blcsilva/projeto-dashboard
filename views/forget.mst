@@ -1,0 +1,8 @@
+{{>header}}
+<form method="post">
+<label>
+Esqueci minha senha.
+</label>
+<input type="email" name="email">
+<input type="submit" value="Redefinir Senha">
+</form>

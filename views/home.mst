@@ -1,0 +1,4 @@
+{{> header}}
+<h1>Seja bem vindo (a)</h1>
+<p>Meu Projeto:{{teste}}</p>
+<p>Testando o Mst</p>
