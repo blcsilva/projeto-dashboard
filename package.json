@@ -29,4 +29,6 @@
     "passport-twitter": "^1.0.4",
     "sequelize": "^6.3.5"
   }
+  
 }
+

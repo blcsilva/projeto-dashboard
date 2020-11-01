@@ -3,7 +3,13 @@ const homeController = require('../controllers/homeController');
 const usersController = require('../controllers/usersController');
 const aboutController = require('../controllers/aboutController')
 const authMiddleware = require('../middlewares/authMiddleware');
+const acl = require('express-acl');
 const router = express.Router();
+
+acl.config({
+    //specify your own baseUrl
+    baseUrl: '/'
+  });
 
 
 
@@ -17,7 +23,7 @@ router.get('/users/logout', usersController.logoutAction);
 
 router.get('/users/register',usersController.register);
 
-router.get('/users/profile',authMiddleware.isLogged,usersController.profile);
+router.get('/users/profile',authMiddleware.isLogged,usersController.profile,acl.config);
 
 
 router.post('/users/register',usersController.registerAction);

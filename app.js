@@ -8,7 +8,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-
+const acl = require('express-acl');
 //Configurações
 
 const app = express();
@@ -59,4 +59,5 @@ app.set('view engine', 'mst');
 app.set('views', __dirname + '/views');
 
 
-module.exports = app;
+
+module.exports = app,acl;
