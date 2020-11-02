@@ -87,7 +87,7 @@ exports.usersProfile = async (req, res,next) => {
     exports.editAction = async (req, res) => {
         
         try {
-            const email = await User.findOneAndUpdate(
+            const user = await User.findOneAndUpdate(
                 { _id:req.user._id},
                 { name:req.body.name,email:req.params.email,profile:req.body.profile},
                 {new:true, runValidators:true },
