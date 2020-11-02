@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
     name: { type: String },
     resetPasswordToken: { type: String},
     resetPasswordExpires:{ type: Date},
-    roles: [String],
+    profile: {type: String ,default:"usuário"},
     confirmation_code: String,
     isVerified: { type: Boolean, default: false },
 

@@ -3,14 +3,7 @@ const homeController = require('../controllers/homeController');
 const usersController = require('../controllers/usersController');
 const aboutController = require('../controllers/aboutController')
 const authMiddleware = require('../middlewares/authMiddleware');
-const acl = require('express-acl');
 const router = express.Router();
-
-acl.config({
-    //specify your own baseUrl
-    baseUrl: '/'
-  });
-
 
 
 router.get('/', homeController.index);
@@ -23,12 +16,19 @@ router.get('/users/logout', usersController.logoutAction);
 
 router.get('/users/register',usersController.register);
 
-router.get('/users/profile',authMiddleware.isLogged,usersController.profile,acl.config);
+router.get('/users/profile',authMiddleware.isLogged,usersController.profile);
 
 
 router.post('/users/register',usersController.registerAction);
 
-router.get('/admin/dashboard',usersController.adminDashboard);
+router.get('/admin/dashboard',authMiddleware.isLogged,usersController.adminDashboard);
+
+router.get('/admin/usersProfile',authMiddleware.isLogged,usersController.usersProfile);
+
+router.get('/admin/profileEdit/:name/:email',authMiddleware.isLogged,usersController.profileEdit);
+
+router.post('/admin/profileEdit/:name/:email',authMiddleware.isLogged,usersController.editAction);
+
 
 router.post('/users/profile',authMiddleware.isLogged,usersController.profileAction);
 

@@ -1,2 +1,6 @@
 {{>header}}
 
+<div>
+<a href="/admin/usersProfile">Listar Usuários</a>
+</div>
+

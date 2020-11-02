@@ -1,6 +1,8 @@
+const mongoose = require('mongoose');
 const User = require('../models/User');
 const crypto = require('crypto');
 const mailHandler = require('../handlers/mailHandlers');
+const { listIndexes } = require('../models/User');
 require('dotenv').config({path:'variables.env'});
 
 exports.login = (req, res) => {
@@ -58,6 +60,53 @@ exports.adminDashboard = (req, res) => {
  res.render('adminDashboard');
 
 };
+
+exports.usersProfile = async (req, res,next) => {
+   
+
+   
+        let responseJson = {
+            users: []
+        }
+    
+        const users = await User.find();
+        responseJson.users = users;
+        res.render('usersProfile',responseJson);
+       
+    };
+
+    exports.profileEdit = (req, res) => {
+    const name = req.params.name;
+    const email = req.params.email;
+    
+
+    res.render('profileEdit', {name, email});
+
+    };
+
+    exports.editAction = async (req, res) => {
+        
+        try {
+            const email = await User.findOneAndUpdate(
+                { _id:req.user._id},
+                { name:req.body.name,email:req.params.email,profile:req.body.profile},
+                {new:true, runValidators:true },
+
+            );
+
+            } catch (e){
+            req.flash('error',"Ocorreu um erro,verifique seus dados e tente novamente!"+e.message);
+            res.redirect('/admin/dashboard');
+            return;
+            }
+             req.flash('success',"Seus dados foram atualizados com sucesso!");
+             res.redirect('/admin/dashboard');
+
+            };
+
+        
+    
+        
 
 exports.logoutAction = (req,res) => {
     req.logout();
