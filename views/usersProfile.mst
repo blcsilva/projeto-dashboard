@@ -8,7 +8,7 @@
 </head>
 <div class ="user-Profile">
 {{#users}}
-<a href="/admin/profileEdit/{{name}}/{{email}}"><li> {{name}},{{email}} </li></a>
+<a href="/admin/profileEdit/{{name}}/{{email}}/{{id}}"><li> {{name}},{{email}} </li></a>
 
 
 {{/users}}

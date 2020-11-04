@@ -77,19 +77,22 @@ exports.usersProfile = async (req, res,next) => {
 
     exports.profileEdit = (req, res) => {
     const name = req.params.name;
+    const id = req.params.id;
     const email = req.params.email;
     
-
-    res.render('profileEdit', {name, email});
+    
+    
+    res.render('profileEdit', {name,email,id});
 
     };
 
     exports.editAction = async (req, res) => {
-        
+       
         try {
-            const user = await User.findOneAndUpdate(
-                { _id:req.user._id},
-                { name:req.body.name,email:req.params.email,profile:req.body.profile},
+               const user = await User.findOneAndUpdate(
+                { _id:req.params.id},
+
+                { profile:req.body.profile},
                 {new:true, runValidators:true },
 
             );
@@ -120,7 +123,9 @@ res.render('profile')
 };
 
 exports.profileAction = async (req, res, next) => {
-        try {
+   
+    try {
+        
         const user = await User.findOneAndUpdate(
             { _id:req.user._id},
             { name:req.body.name, email:req.body.email},

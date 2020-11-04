@@ -25,9 +25,9 @@ router.get('/admin/dashboard',authMiddleware.isLogged,usersController.adminDashb
 
 router.get('/admin/usersProfile',authMiddleware.isLogged,usersController.usersProfile);
 
-router.get('/admin/profileEdit/:name/:email',authMiddleware.isLogged,usersController.profileEdit);
+router.get('/admin/profileEdit/:name/:email/:id',authMiddleware.isLogged,usersController.profileEdit);
 
-router.post('/admin/profileEdit/:name/:email',authMiddleware.isLogged,usersController.editAction);
+router.post('/admin/profileEdit/:name/:email/:id',authMiddleware.isLogged,usersController.editAction);
 
 
 router.post('/users/profile',authMiddleware.isLogged,usersController.profileAction);
