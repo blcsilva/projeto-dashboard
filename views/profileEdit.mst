@@ -1,5 +1,5 @@
 {{>header}}
-<body>
+
 <h1>Alterar Dados do Usuário</h1>
 
 <form method="POST">
@@ -31,4 +31,3 @@ Perfil:<select name="profile">
 
 
 
-</body>

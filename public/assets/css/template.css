@@ -579,3 +579,15 @@ height:auto;
   float:right;
 
   }
+
+  .user-profile {
+    width: 300px;
+    height:auto;
+    background-color: #cacaca;
+    color: #050505;
+    margin:20px 10px 20px 10px;
+    padding:10px;
+    
+    
+    
+    }

@@ -91,8 +91,8 @@ exports.usersProfile = async (req, res,next) => {
         try {
                const user = await User.findOneAndUpdate(
                 { _id:req.params.id},
-
-                { profile:req.body.profile},
+                {name:req.body.name},
+                {profile:req.body.profile},
                 {new:true, runValidators:true },
 
             );
@@ -104,6 +104,7 @@ exports.usersProfile = async (req, res,next) => {
             }
              req.flash('success',"Seus dados foram atualizados com sucesso!");
              res.redirect('/admin/dashboard');
+             return;
 
             };
 
