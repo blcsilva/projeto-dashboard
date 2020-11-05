@@ -91,7 +91,7 @@ exports.usersProfile = async (req, res,next) => {
         try {
                const user = await User.findOneAndUpdate(
                 { _id:req.params.id},
-                {name:req.body.name},
+                {name:req.body.name,email: req.body.email},
                 {profile:req.body.profile},
                 {new:true, runValidators:true },
 
